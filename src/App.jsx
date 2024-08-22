@@ -1,14 +1,17 @@
-import { DarkThemeToggle } from "flowbite-react";
+import React from "react";
 
-function App() {
+import { Authenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+
+export default function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center gap-2 dark:bg-gray-800">
-      <h1 className="text-2xl dark:text-white">
-        Flowbite React + Create React App
-      </h1>
-      <DarkThemeToggle />
-    </main>
+    <Authenticator className="mt-20">
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
+      )}
+    </Authenticator>
   );
 }
-
-export default App;
